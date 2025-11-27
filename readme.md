@@ -262,14 +262,13 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📧 Contact
 
-- **Email**: hello@raisehive.io
+- **Email**: fusion@raisehive.io
 - **Website**: [raisehive.io](https://raisehive.io)
-- **GitHub**: [@yourusername](https://github.com/yourusername)
+- **GitHub**: [@fusiondev117-boop](https://github.com/fusiondev117-boop)
 
 ## 🙏 Acknowledgments
 
 - [Thirdweb](https://thirdweb.com/) - Web3 development framework
-- [WhyDonate](https://whydonate.com/) - Design inspiration
 - [Tailwind CSS](https://tailwindcss.com/) - Styling framework
 - [NextUI](https://nextui.org/) - UI components
 
