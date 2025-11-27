@@ -7,7 +7,7 @@ const PaymentsDetail = () => {
       <div className="bg-white dark:bg-[#1c1c24] shadow-md rounded-lg p-8 max-w-5xl w-full mx-auto">
         <h2 className="text-2xl font-semibold mb-4 text-gray-900 dark:text-gray-100">Connecting Your MetaMask Wallet</h2>
         <p className="mb-4 text-gray-800 dark:text-gray-200">
-          MetaMask is a popular cryptocurrency wallet that allows you to interact with the Ethereum blockchain. Follow these steps to connect your MetaMask wallet to Block Fund:
+          MetaMask is a popular cryptocurrency wallet that allows you to interact with the Ethereum blockchain. Follow these steps to connect your MetaMask wallet to Raise Hive:
         </p>
         <ol className="list-decimal list-inside space-y-6 text-gray-800 dark:text-gray-200">
           <li>
@@ -23,12 +23,12 @@ const PaymentsDetail = () => {
             <p className="mt-1">Ensure you are connected to the Ethereum Mainnet.</p>
           </li>
           <li>
-            <strong>Login to Block Fund:</strong> 
-            <p className="mt-1">Go to the Block Fund platform and log in to your MetaMask account.</p>
+            <strong>Login to Raise Hive:</strong> 
+            <p className="mt-1">Go to the Raise Hive platform and log in to your MetaMask account.</p>
           </li>
           <li>
             <strong>Confirm Connection:</strong> 
-            <p className="mt-1">Your MetaMask wallet is now connected to your Block Fund account. You can receive funds directly to your wallet.</p>
+            <p className="mt-1">Your MetaMask wallet is now connected to your Raise Hive account. You can receive funds directly to your wallet.</p>
           </li>
         </ol>
 
@@ -49,7 +49,7 @@ const PaymentsDetail = () => {
           <li>Verify that you are connected to the Ethereum Mainnet.</li>
           <li>Check if you have enough ETH in your wallet to cover gas fees.</li>
           <li>If a transaction fails, try resubmitting it after checking the network status on <a href="https://etherscan.io/" className="text-blue-500 underline" target="_blank" rel="noopener noreferrer">Etherscan</a>.</li>
-          <li>For further assistance, contact Block Fund support or visit the <a href="https://metamask.io/faqs.html" className="text-blue-500 underline" target="_blank" rel="noopener noreferrer">MetaMask FAQ</a>.</li>
+          <li>For further assistance, contact Raise Hive support or visit the <a href="https://metamask.io/faqs.html" className="text-blue-500 underline" target="_blank" rel="noopener noreferrer">MetaMask FAQ</a>.</li>
         </ul>
       </div>
     </div>

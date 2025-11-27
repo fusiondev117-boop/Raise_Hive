@@ -1,7 +1,6 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 mongoose.Promise = global.Promise;
-
 const commentSchema = new mongoose.Schema({
     article_id: {
         type: String,
@@ -54,6 +53,6 @@ const commentSchema = new mongoose.Schema({
     },
 });
 
-const Comment = mongoose.models.Comment || mongoose.model("Comment", commentSchema);
+const Comment = mongoose.models.Comment ?? mongoose.model("Comment", commentSchema);
 
-module.exports = { Comment, commentSchema };
+module.exports = { commentSchema, Comment };

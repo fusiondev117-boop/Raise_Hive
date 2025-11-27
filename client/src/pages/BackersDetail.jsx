@@ -9,12 +9,12 @@ const BackersDetail = () => {
         <div className="bg-white dark:bg-[#1c1c24] shadow-md rounded-lg p-8 max-w-5xl w-full mx-auto">
           <h2 className="text-2xl font-semibold mb-4 text-gray-900 dark:text-gray-100">How to Evaluate and Back Campaigns</h2>
           <p className="mb-4 text-gray-800 dark:text-gray-200">
-            Supporting a crowdfunding campaign can be a rewarding experience. Here's how you can evaluate and back campaigns on Block Fund:
+            Supporting a crowdfunding campaign can be a rewarding experience. Here's how you can evaluate and back campaigns on Raise Hive:
           </p>
 
           <h3 className="text-xl font-semibold mb-4 text-gray-900 dark:text-gray-100">1. Explore Campaigns</h3>
           <p className="mb-4 text-gray-800 dark:text-gray-200">
-            Browse through various campaigns on the Block Fund platform. You can use filters to find campaigns that match your interests. Each campaign has a detailed page with information about the project, funding goals, timeline, and updates from the campaign creator.
+            Browse through various campaigns on the Raise Hive platform. You can use filters to find campaigns that match your interests. Each campaign has a detailed page with information about the project, funding goals, timeline, and updates from the campaign creator.
           </p>
 
           <h3 className="text-xl font-semibold mb-4 text-gray-900 dark:text-gray-100">2. Evaluate the Campaign</h3>
@@ -29,19 +29,19 @@ const BackersDetail = () => {
 
           <h3 className="text-xl font-semibold mb-4 text-gray-900 dark:text-gray-100">4. Manage Your Contributions</h3>
           <p className="mb-4 text-gray-800 dark:text-gray-200">
-            After backing a campaign, you can manage your contributions through your Block Fund profile. You can track the progress of the campaigns you've supported, communicate with the campaign creators, and stay updated with their latest posts and developments.
+            After backing a campaign, you can manage your contributions through your Raise Hive profile. You can track the progress of the campaigns you've supported, communicate with the campaign creators, and stay updated with their latest posts and developments.
           </p>
 
-          <h2 className="text-2xl font-semibold mb-4 text-gray-900 dark:text-gray-100">Understanding Block Fund Policies</h2>
+          <h2 className="text-2xl font-semibold mb-4 text-gray-900 dark:text-gray-100">Understanding Raise Hive Policies</h2>
           <p className="mb-4 text-gray-800 dark:text-gray-200">
-            Block Fund is committed to maintaining a secure and transparent platform. Here are some key policies to be aware of as a backer:
+            Raise Hive is committed to maintaining a secure and transparent platform. Here are some key policies to be aware of as a backer:
           </p>
 
           <a href="/PrivacyPolicy" className="text-[#8c6dfd] underline mb-4 block">Read our Privacy Policy</a>
 
           <h3 className="text-xl font-semibold mb-4 text-gray-900 dark:text-gray-100">Terms of Service</h3>
           <p className="mb-4 text-gray-800 dark:text-gray-200">
-            By using Block Fund, you agree to our Terms of Service. These terms outline your rights and responsibilities as a user, including acceptable use policies, intellectual property rights, and dispute resolution procedures.
+            By using Raise Hive, you agree to our Terms of Service. These terms outline your rights and responsibilities as a user, including acceptable use policies, intellectual property rights, and dispute resolution procedures.
           </p>
           <a href="/TermsOfUse" className="text-[#8c6dfd] underline mb-4 block">Read our Terms of use</a>
 

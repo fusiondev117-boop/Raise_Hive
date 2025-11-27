@@ -14,7 +14,7 @@ const About = () => {
         </h1>
 
         <p className="text-lg sm:text-xl lg:text-xl text-center mb-8 lg:px-32 lg:text-justify">
-          Block Fund is a Blockchain based Crowd Funding platform, designed to
+          Raise Hive is a Blockchain based Crowd Funding platform, designed to
           overcome the challenges faced by traditional crowdfunding platforms
           like Kickstarter. Our primary focus is to revolutionize the funding
           landscape by introducing transparency, security, efficiency,
@@ -39,11 +39,11 @@ const About = () => {
         </div>
 
         <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center mb-4">
-          Block Fund Innovation
+          Raise Hive Innovation
         </h2>
 
         <p className="text-lg sm:text-xl lg:text-lg text-center mb-8">
-          Block Fund aims to redefine the funding landscape, providing a
+          Raise Hive aims to redefine the funding landscape, providing a
           platform where ideas can flourish and communities can support
           impactful projects worldwide.
         </p>
@@ -53,7 +53,7 @@ const About = () => {
             <Card>
               <CardBody>
                 <p className="text-lg lg:text-normal text-center">
-                  Products on Block Fund are unique. They
+                  Products on Raise Hive are unique. They
                   aren’t like what I’d find on the market. They aren’t
                   mainstream. It’s the newest tech that companies don’t even
                   know will be popular.
@@ -65,7 +65,7 @@ const About = () => {
             <Card>
               <CardBody>
                 <p className="text-lg lg:text-normal text-center">
-                  Block Fund look for things that could be useful in my everyday
+                  Raise Hive look for things that could be useful in my everyday
                   life. I look for innovation – what kind of features does this
                   have in addition to what’s already on the market.
                 </p>
@@ -76,7 +76,7 @@ const About = () => {
             <Card>
               <CardBody>
                 <p className="text-lg lg:text-normal text-center">
-                  Block Fund allows you to connect your creations with a
+                  Raise Hive allows you to connect your creations with a
                   community that is eager for innovation. The team behind the
                   platform also provided great feedback based on their
                   experience.
@@ -95,7 +95,7 @@ const About = () => {
           <div className="absolute inset-0 flex flex-col justify-center items-center">
             <div className="max-w-3xl mx-auto text-center">
               <h1 className="text-4xl font-bold text-white">
-                Find it first on Block Fund
+                Find it first on Raise Hive
               </h1>
             </div>
           </div>
@@ -106,7 +106,7 @@ const About = () => {
         </h2>
 
         <p className="text-lg sm:text-xl lg:text-lg lg:text-justify lg:px-32 text-center mb-8">
-          Block Fund's support for creative work goes beyond our platform. We
+          Raise Hive's support for creative work goes beyond our platform. We
           publish The Creative Independent (TCI) as a way to share advice and
           illuminate the many, many routes to living a creative life.
         </p>
@@ -117,7 +117,7 @@ const About = () => {
 
         <p className="text-lg sm:text-xl lg:text-lg text-center lg:text-justify lg:px-32">
           We're an independent company of passionate people working together. We
-          spend our time designing and building Block Fund, forging community
+          spend our time designing and building Raise Hive, forging community
           around creative projects, and supporting the creative ecosystem around
           us. We’re developers, designers, support specialists, writers.
         </p>

@@ -1,69 +1,54 @@
 import React from 'react';
 
-const RaiseHiveLogo = ({ size = 'md', showText = true, className = '' }) => {
-  const sizes = {
-    sm: { icon: 32, text: 'text-lg' },
-    md: { icon: 48, text: 'text-2xl' },
-    lg: { icon: 64, text: 'text-3xl' },
-    xl: { icon: 80, text: 'text-4xl' }
-  };
-
-  const currentSize = sizes[size] || sizes.md;
-
+const RaiseHiveLogo = ({ className = "", showText = true }) => {
   return (
     <div className={`flex items-center gap-3 ${className}`}>
-      {/* Hexagon/Hive Icon with Gradient */}
-      <svg
-        width={currentSize.icon}
-        height={currentSize.icon}
-        viewBox="0 0 100 100"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <defs>
-          <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="#8B5CF6" />
-            <stop offset="100%" stopColor="#EC4899" />
-          </linearGradient>
-        </defs>
-        
-        {/* Main Hexagon */}
-        <path
-          d="M50 5 L85 27.5 L85 72.5 L50 95 L15 72.5 L15 27.5 Z"
-          fill="url(#logoGradient)"
-          opacity="0.9"
-        />
-        
-        {/* Inner Hexagons - Hive Pattern */}
-        <path
-          d="M50 25 L65 35 L65 55 L50 65 L35 55 L35 35 Z"
-          fill="white"
-          opacity="0.3"
-        />
-        
-        {/* Small Hexagons */}
-        <path
-          d="M35 20 L42 24 L42 32 L35 36 L28 32 L28 24 Z"
-          fill="white"
-          opacity="0.2"
-        />
-        <path
-          d="M65 20 L72 24 L72 32 L65 36 L58 32 L58 24 Z"
-          fill="white"
-          opacity="0.2"
-        />
-        <path
-          d="M50 70 L57 74 L57 82 L50 86 L43 82 L43 74 Z"
-          fill="white"
-          opacity="0.2"
-        />
-      </svg>
-
-      {/* Text Logo */}
+      {/* Friendly rounded logo with heart/hive concept */}
+      <div className="relative group">
+        <svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#00b4d8" />
+              <stop offset="100%" stopColor="#7c3aed" />
+            </linearGradient>
+          </defs>
+          
+          {/* Rounded background circle */}
+          <circle 
+            cx="22" 
+            cy="22" 
+            r="20" 
+            fill="url(#logoGradient)"
+            className="group-hover:scale-110 transition-transform duration-300"
+          />
+          
+          {/* Hexagon pattern (hive) */}
+          <path 
+            d="M22 10 L28 14 L28 20 L22 24 L16 20 L16 14 Z" 
+            fill="white" 
+            opacity="0.9"
+          />
+          <path 
+            d="M16 20 L22 24 L22 30 L16 34 L10 30 L10 24 Z" 
+            fill="white" 
+            opacity="0.6"
+          />
+          <path 
+            d="M28 20 L34 24 L34 30 L28 34 L22 30 L22 24 Z" 
+            fill="white" 
+            opacity="0.6"
+          />
+        </svg>
+      </div>
+      
+      {/* Text logo - Friendly style */}
       {showText && (
-        <div className="flex flex-col leading-none">
-          <span className={`font-bold ${currentSize.text} text-white`}>
-            Raise<span className="text-gradient">Hive</span>
+        <div className="flex flex-col leading-tight">
+          <span className="text-2xl font-manrope font-bold text-gray-900 dark:text-white">
+            Raise Hive
+          </span>
+          <span className="text-xs font-inter font-medium text-gray-500 dark:text-gray-400">
+            Fund Your Dreams
           </span>
         </div>
       )}

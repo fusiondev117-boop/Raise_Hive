@@ -20,8 +20,8 @@ const cardsData = [
     },
     {
       image: BlockFundVsKickstarter,
-      name: "Block Fund vs Kickstarter",
-      description: "Learn about the benefits of choosing Block fund for your idea. See our detailed breakdown.",
+      name: "Raise Hive vs Kickstarter",
+      description: "Learn about the benefits of choosing Raise Hive for your idea. See our detailed breakdown.",
       link: "GET INFORMED",
       route: "/BlockFundVsKickstarter",
     }

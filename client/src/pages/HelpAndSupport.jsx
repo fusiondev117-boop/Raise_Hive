@@ -16,7 +16,7 @@ import ConnectToExperts from '../assets/ConnectToExperts.jpg';
 //   {
 //     image: ConnectToExperts,
 //     name: "Connect to Experts",
-//     description: "Take your further with these experienced companies recommended by Block Fund campaigners and staff.",
+//     description: "Take your further with these experienced companies recommended by Raise Hive campaigners and staff.",
 //     link: "See Expert Directory",
 //     route: "/FindExperts",
 //   },

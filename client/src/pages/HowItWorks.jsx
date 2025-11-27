@@ -24,7 +24,7 @@ const HowItWorks = () => {
                 </div>
             </div>
             {/* <div className="flex flex-col items-center justify-center mb-20">
-                <p className="text-center">Find Block Fund-vetted companies to help you launch your campaign and take your product to market.</p>
+                <p className="text-center">Find Raise Hive-vetted companies to help you launch your campaign and take your product to market.</p>
                 <button className="bg-[#8c6dfd] text-white py-2 px-4 rounded mt-2 font-semibold" onClick={() => navigate("/FindExperts")}>FIND EXPERTS</button>
             </div> */}
 
@@ -43,13 +43,13 @@ const HowItWorks = () => {
                 </div>
             </div>
             <div className="text-center my-8 max-w-3xl mx-auto">
-                <p className="text-justify text-lg pb-8">Block Fund embodies flexibility and global reach, granting creators the freedom to raise funds for any project from anywhere in the world. Whether you're launching a local initiative or targeting a global audience, our platform empowers you to harness the power of crowdfunding without limitations. With seamless access to a diverse pool of backers and a borderless approach to fundraising, Block Fund enables you to realize your vision on a truly international scale, breaking down barriers and unlocking opportunities for success.</p>
+                <p className="text-justify text-lg pb-8">Raise Hive embodies flexibility and global reach, granting creators the freedom to raise funds for any project from anywhere in the world. Whether you're launching a local initiative or targeting a global audience, our platform empowers you to harness the power of crowdfunding without limitations. With seamless access to a diverse pool of backers and a borderless approach to fundraising, Raise Hive enables you to realize your vision on a truly international scale, breaking down barriers and unlocking opportunities for success.</p>
             </div>
 
             <div className="bg-white dark:bg-[#2c2f32] shadow-lg rounded-lg mb-20">
                 <div className="px-4 sm:px-6 lg:px-48 py-12 ">
                     <h1 className="text-2xl lg:text-3xl font-semibold text-center mb-1">Ready to Go?</h1>
-                    <p className="text-center text-lg ">You're only a step away from kicking off your entrepreneurial adventure on Block Fund. Here's where to go next:</p>
+                    <p className="text-center text-lg ">You're only a step away from kicking off your entrepreneurial adventure on Raise Hive. Here's where to go next:</p>
                 </div>
                 <ReadyToGo />
             </div>

@@ -1,47 +1,230 @@
-## Getting Started
+# Raise Hive - Smart Contracts
 
-Create a project using this example:
+> Ethereum smart contracts for the Raise Hive crowdfunding platform
+
+## 🚀 Quick Start
 
 ```bash
-npx thirdweb create --contract --template hardhat-javascript-starter
+# Install dependencies
+npm install
+
+# Compile contracts
+npm run build
+
+# Deploy contracts
+npm run deploy
+
+# Release contracts
+npm run release
 ```
 
-You can start editing the page by modifying `contracts/Contract.sol`.
+## 📁 Project Structure
 
-To add functionality to your contracts, you can use the `@thirdweb-dev/contracts` package which provides base contracts and extensions to inherit. The package is already installed with this project. Head to our [Contracts Extensions Docs](https://portal.thirdweb.com/contractkit) to learn more.
+```
+web3/
+├── contracts/          # Solidity smart contracts
+│   ├── RaiseHive.sol  # Main crowdfunding contract
+│   └── ...
+├── scripts/           # Deployment scripts
+├── test/              # Contract tests
+├── hardhat.config.js  # Hardhat configuration
+└── package.json
+```
 
-## Building the project
+## 📝 Smart Contract Overview
 
-After any changes to the contract, run:
+### RaiseHive Contract
 
+The main contract handles all crowdfunding operations:
+
+```solidity
+contract RaiseHive {
+    struct Campaign {
+        address payable creator;
+        uint goal;
+        uint raisedAmount;
+        uint deadline;
+        bool completed;
+        string category;
+        string title;
+    }
+    
+    // Core functions
+    function createCampaign(...) public
+    function contribute(uint _campaignId) public payable
+    function withdrawFunds(uint _campaignId) public
+}
+```
+
+### Key Features
+
+- **Campaign Creation**: Anyone can create a campaign with goal and deadline
+- **Contributions**: Users can contribute ETH to campaigns
+- **Withdrawals**: Creators can withdraw funds after deadline
+- **Transparency**: All transactions recorded on blockchain
+- **Security**: Built-in checks and validations
+
+## 🔧 Contract Functions
+
+### createCampaign
+```solidity
+function createCampaign(
+    uint _goal,
+    uint _duration,
+    string memory _category,
+    string memory _title
+) public
+```
+Creates a new crowdfunding campaign.
+
+### contribute
+```solidity
+function contribute(uint _campaignId) public payable
+```
+Contribute ETH to a campaign.
+
+### withdrawFunds
+```solidity
+function withdrawFunds(uint _campaignId) public
+```
+Withdraw funds after campaign ends (creator only).
+
+## 🛠️ Development
+
+### Compile Contracts
 ```bash
 npm run build
-# or
-yarn build
 ```
+Compiles all Solidity contracts and generates artifacts.
 
-to compile your contracts. This will also detect the [Contracts Extensions Docs](https://portal.thirdweb.com/contractkit) detected on your contract.
-
-## Deploying Contracts
-
-When you're ready to deploy your contracts, just run one of the following command to deploy you're contracts:
-
+### Deploy to Network
 ```bash
 npm run deploy
-# or
-yarn deploy
+```
+Deploys contracts to the selected network (testnet/mainnet).
+
+### Run Tests
+```bash
+npx hardhat test
 ```
 
-## Releasing Contracts
+### Local Development
+```bash
+# Start local Hardhat node
+npx hardhat node
 
-If you want to release a version of your contracts publicly, you can use one of the followings command:
+# Deploy to local network
+npx hardhat run scripts/deploy.js --network localhost
+```
+
+## 🌐 Supported Networks
+
+- **Ethereum Mainnet**
+- **Goerli Testnet**
+- **Sepolia Testnet**
+- **Polygon**
+- **Mumbai (Polygon Testnet)**
+
+## 🔐 Security Features
+
+- ✅ Reentrancy protection
+- ✅ Access control (only creator can withdraw)
+- ✅ Deadline validation
+- ✅ Goal completion checks
+- ✅ Safe math operations
+
+## 📊 Gas Optimization
+
+- Efficient storage patterns
+- Minimal state changes
+- Optimized loops
+- Event emissions for off-chain tracking
+
+## 🧪 Testing
 
 ```bash
-npm run release
-# or
-yarn release
+# Run all tests
+npx hardhat test
+
+# Run specific test
+npx hardhat test test/RaiseHive.test.js
+
+# Check coverage
+npx hardhat coverage
 ```
 
-## Join our Discord!
+## 📦 Dependencies
 
-For any questions, suggestions, join our discord at [https://discord.gg/thirdweb](https://discord.gg/thirdweb).
+- **hardhat**: ^2.x - Development environment
+- **@thirdweb-dev/contracts**: Contract extensions
+- **@openzeppelin/contracts**: Secure contract library
+- **ethers**: ^5.x - Ethereum library
+
+## 🔗 Thirdweb Integration
+
+This project uses Thirdweb for:
+- Easy deployment
+- Contract management
+- Dashboard access
+- IPFS storage
+
+### Deploy with Thirdweb
+```bash
+npm run deploy
+```
+
+### Release Contract
+```bash
+npm run release
+```
+
+## 📝 Environment Variables
+
+Create a `.env` file:
+
+```env
+PRIVATE_KEY=your_wallet_private_key
+THIRDWEB_API_KEY=your_thirdweb_api_key
+ETHERSCAN_API_KEY=your_etherscan_api_key
+```
+
+## 🔍 Contract Verification
+
+After deployment, verify on Etherscan:
+
+```bash
+npx hardhat verify --network mainnet DEPLOYED_CONTRACT_ADDRESS
+```
+
+## 📚 Learn More
+
+- [Solidity Documentation](https://docs.soliditylang.org/)
+- [Hardhat Documentation](https://hardhat.org/docs)
+- [Thirdweb Contracts](https://portal.thirdweb.com/contractkit)
+- [OpenZeppelin](https://docs.openzeppelin.com/contracts)
+
+## 🐛 Common Issues
+
+### Insufficient funds
+Ensure your wallet has enough ETH for gas fees.
+
+### Nonce too high
+Reset your MetaMask account or wait for pending transactions.
+
+### Contract size too large
+Optimize contract code or split into multiple contracts.
+
+## 🤝 Contributing
+
+1. Write tests for new features
+2. Follow Solidity style guide
+3. Document all functions
+4. Run security checks
+
+## 📄 License
+
+MIT License - see LICENSE file for details
+
+---
+
+**Secure, transparent, decentralized** 🔐

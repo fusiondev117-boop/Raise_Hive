@@ -45,12 +45,12 @@ const WhatWeDo = () => {
         <div className="text-center my-8 max-w-3xl mx-auto">
           <h2 className="text-2xl font-bold pb-3">Fund the next big thing</h2>
           <p className="text-justify">
-            Block Fund's crowdfunding campaigns are where new and groundbreaking
+            Raise Hive's crowdfunding campaigns are where new and groundbreaking
             products take flight, sometimes long before they hit mainstream
             availability. With thousands of campaigns launching every week,
             there's great tech, design, and much more around every corner —
             often with limited-time perks and pricing for the earliest backers.
-            Before it's everywhere, it's on Block Fund.
+            Before it's everywhere, it's on Raise Hive.
           </p>
         </div>
 
@@ -67,7 +67,7 @@ const WhatWeDo = () => {
             />
           </div>
           <p className="text-justify pt-8">
-            With Block Fund, you have the opportunity to support entrepreneurs
+            With Raise Hive, you have the opportunity to support entrepreneurs
             and new technology from the earliest stages of development. Be sure
             to evaluate every campaign closely and contribute at a level you can
             afford in the event that the team is unable to complete the project
@@ -94,49 +94,65 @@ const WhatWeDo = () => {
           </p>
         </div>
 
-        {/* Great finds, delivered daily Section */}
-        <div className="text-center my-8 mx-auto bg-white dark:bg-[#1c1c24] py-20 w-full">
-          <h2 className="text-2xl font-bold pb-3">
-            Great finds, delivered daily
-          </h2>
-          <div className="max-w-3xl lg:mx-auto px-4">
-            <p>
-              We surface the best and brightest of Block Fund in our newsletter.
-              Find out about great technology, design, film, and much more — all
-              before it hits the mainstream.
-            </p>
-          </div>
+        {/* Newsletter Section - Modern Design */}
+        <div className="my-20 mx-auto w-full">
+          <div className="max-w-4xl mx-auto px-4">
+            <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-primary-500 via-secondary-500 to-accent-500 p-12 md:p-16">
+              {/* Background Pattern */}
+              <div className="absolute inset-0 opacity-10">
+                <div className="absolute top-0 left-0 w-64 h-64 bg-white rounded-full blur-3xl"></div>
+                <div className="absolute bottom-0 right-0 w-64 h-64 bg-white rounded-full blur-3xl"></div>
+              </div>
 
-          <div className="flex flex-col md:flex-row justify-center items-center my-4">
-            <input
-              type="email"
-              required
-              id="email"
-              value={email}
-              onChange={handleEmailChange}
-              placeholder="Enter your email"
-              className=" outline-none px-4 py-2 rounded-l mb-2 md:mb-0 md:mr-2 bg-[#dad6d6] dark:bg-[#0e0e11]"
-            />
-            <button
-              onClick={handleSubmit}
-              className="bg-[#8c6dfd] hover:bg-[#9691aa] text-white font-semibold py-2 px-4 rounded-r ml-0 md:ml-2"
-            >
-              Subscribe
-            </button>
+              {/* Content */}
+              <div className="relative z-10 text-center">
+                <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full mb-6">
+                  <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                  </svg>
+                  <span className="text-white font-inter font-semibold text-sm">Newsletter</span>
+                </div>
+
+                <h2 className="text-3xl md:text-4xl font-manrope font-bold text-white mb-4">
+                  Great Finds, Delivered Daily
+                </h2>
+                <p className="text-white/90 font-inter text-lg mb-8 max-w-2xl mx-auto leading-relaxed">
+                  Discover the best and brightest projects on Raise Hive. Get curated updates on technology, design, film, and more — before they hit the mainstream.
+                </p>
+
+                {/* Newsletter Form */}
+                <div className="max-w-md mx-auto">
+                  <div className="flex flex-col sm:flex-row gap-3 mb-4">
+                    <input
+                      type="email"
+                      required
+                      id="email"
+                      value={email}
+                      onChange={handleEmailChange}
+                      placeholder="Enter your email address"
+                      className="flex-1 px-6 py-4 rounded-full bg-white dark:bg-white text-gray-900 placeholder:text-gray-500 outline-none focus:ring-4 focus:ring-white/30 transition-all font-inter"
+                    />
+                    <button
+                      onClick={handleSubmit}
+                      className="px-8 py-4 bg-gray-900 hover:bg-gray-800 text-white font-inter font-semibold rounded-full transition-all hover:scale-105 whitespace-nowrap"
+                    >
+                      Subscribe
+                    </button>
+                  </div>
+                  
+                  <label className="flex items-center justify-center gap-2 text-white/80 text-sm">
+                    <input type="checkbox" className="w-4 h-4 rounded border-white/30 bg-white/20 text-primary-600 focus:ring-white/30" />
+                    <span className="font-inter">
+                      I agree to the{" "}
+                      <a href="/TermsOfUse" className="underline hover:text-white">Terms of Use</a>
+                      {" "}and have read the{" "}
+                      <a href="/PrivacyPolicy" className="underline hover:text-white">Privacy Policy</a>
+                    </span>
+                  </label>
+                </div>
+              </div>
+            </div>
           </div>
-          <label className="flex flex-col md:flex-row items-center justify-center px-4">
-            <input type="checkbox" className="form-checkbox mr-2" />
-            <span className="mb-2 md:mb-0 justify-center ">
-              I agree to the{" "}
-              <span className="text-[#8c6dfd] cursor-pointer">
-                <a href="/TermsOfUse">Terms of Use</a>
-              </span>{" "}
-              and have read and understand the{" "}
-              <span className="text-[#8c6dfd] cursor-pointer">
-                <a href="/PrivacyPolicy">Privacy Policy.</a>
-              </span>
-            </span>
-          </label>
         </div>
 
         {/* What is a perk Section */}

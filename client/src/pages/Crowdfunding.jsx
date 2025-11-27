@@ -13,9 +13,9 @@ const Crowdfunding = () => {
         effect on fundraising and its ability to connect people with shared interests.
       </p>
 
-      <h1 className="text-3xl font-bold text-center mb-4">What is Block Fund?</h1>
+      <h1 className="text-3xl font-bold text-center mb-4">What is Raise Hive?</h1>
       <p className="text-lg mb-10 text-justify">
-            Block Fund is a platform designed to facilitate crowdfunding campaigns using blockchain technology. It allows project creators to raise funds from a global audience, while backers gain a transparent and secure way to support projects they believe in. The platform uses smart contracts to automate funding, disbursement,  ensuring that the process is efficient and trusted.
+            Raise Hive is a platform designed to facilitate crowdfunding campaigns using blockchain technology. It allows project creators to raise funds from a global audience, while backers gain a transparent and secure way to support projects they believe in. The platform uses smart contracts to automate funding, disbursement,  ensuring that the process is efficient and trusted.
       </p>
 
       <h2 className="text-2xl font-semibold mb-4">Benefits of Crowdfunding</h2>

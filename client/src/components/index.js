@@ -7,4 +7,5 @@ export { default as FundCard } from './FundCard';
 export { default as CountBox } from './CountBox';
 export { default as Loader } from './Loader';
 export { default as AllCampaigns } from './AllCampaigns';
+export { default as RaiseHiveLogo } from './RaiseHiveLogo';
 // export { default as CardsGrid } from './CardsGrid';

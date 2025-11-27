@@ -4,7 +4,7 @@
 
 ## Overview
 
-This document outlines the security policies for the **Block Fund** Crowdfunding Platform, a blockchain-based crowdfunding application. We take the security of our platform very seriously and appreciate the community’s assistance in identifying and mitigating potential vulnerabilities.
+This document outlines the security policies for the **Raise Hive** Crowdfunding Platform, a blockchain-based crowdfunding application. We take the security of our platform very seriously and appreciate the community’s assistance in identifying and mitigating potential vulnerabilities.
 
 ## Supported Versions
 
@@ -20,7 +20,7 @@ We actively support the following versions of the platform. We recommend that al
 If you discover a security vulnerability, please do the following:
 
 1. **Do not disclose the vulnerability publicly** until we have had a chance to address it.
-2. **Email us at** [blockfund0@gmail.com](mailto:blockfund0@gmail.com) with the details of the vulnerability. Please include:
+2. **Email us at** [hello@raisehive.io](mailto:hello@raisehive.io) with the details of the vulnerability. Please include:
     - A detailed description of the vulnerability.
     - Steps to reproduce the issue.
     - Potential impact of the vulnerability.
@@ -35,7 +35,7 @@ To ensure the security of your interactions with our platform, we recommend the 
 - **Enable Two-Factor Authentication (2FA):** Always enable 2FA on your account to protect against unauthorized access.
 - **Use a Secure Wallet:** Use reputable and secure wallets to interact with the blockchain. Ensure your private keys are stored securely.
 - **Stay Informed:** Regularly update your wallet and other software to the latest versions.
-- **Be Cautious with Links:** Only interact with official Block Fund links and be wary of phishing attempts.
+- **Be Cautious with Links:** Only interact with official RaiseHive links and be wary of phishing attempts.
 
 ### For Developers:
 - **Code Reviews:** All code changes must undergo thorough peer reviews. Use tools like linters and static analyzers to catch potential vulnerabilities.
@@ -64,9 +64,9 @@ In case of a security incident, our response plan includes:
 
 For any security-related inquiries or to report a vulnerability, please contact our security team:
 
-- **Email:** [blockfund0@gmail.com](mailto:blockfund0@gmail.com)
+- **Email:** [hello@raisehive.io](mailto:hello@raisehive.io)
 - **PGP Key:** (Include a link or key for encrypted communication if applicable)
 
-We appreciate your contributions to the security of Block Fund and thank you for helping to keep our platform safe.
+We appreciate your contributions to the security of RaiseHive and thank you for helping to keep our platform safe.
 
 ---

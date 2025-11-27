@@ -11,7 +11,7 @@ const TrustOperationsDetail = () => {
         <div className="bg-white dark:bg-[#1c1c24] shadow-md rounded-lg p-8 max-w-5xl w-full mx-auto">
           <h2 className="text-2xl font-semibold mb-4 text-gray-900 dark:text-gray-100">Our Commitment to Trust and Safety</h2>
           <p className="mb-4 text-gray-800 dark:text-gray-200">
-            At Block Fund, trust and safety are our top priorities. We ensure a secure and transparent platform for both campaigners and backers. Here’s how we protect our community:
+            At Raise Hive, trust and safety are our top priorities. We ensure a secure and transparent platform for both campaigners and backers. Here’s how we protect our community:
           </p>
 
           <h3 className="text-xl font-semibold mb-4 text-gray-900 dark:text-gray-100">Fraud Prevention</h3>

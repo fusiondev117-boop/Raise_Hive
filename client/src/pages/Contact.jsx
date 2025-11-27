@@ -38,7 +38,7 @@ const Contact = () => {
     <div className="container mx-auto py-4 px-4">
       <div className="">
         <h2 className="text-4xl font-bold mb-10 mt-20">Have a question?</h2>
-        {/* <p className="mb-10">To get started, please log in to your Block Fund account if you have one.</p> */}
+        {/* <p className="mb-10">To get started, please log in to your Raise Hive account if you have one.</p> */}
         {/* <hr className="border-gray-300 my-8" /> */}
         <form onSubmit={handleSubmit}>
           <div className="mb-4">

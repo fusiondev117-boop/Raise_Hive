@@ -44,7 +44,7 @@ const SearchCampaigns = ({ searchQuery }) => {
   return (
     <div className="p-6">
       <h1 className="text-3xl lg:text-3xl font-semibold text-center mt-6 mb-20">
-        {searchQuery ? `Search Results for "${searchQuery}"` : "Block Fund Campaigns"}
+        {searchQuery ? `Search Results for "${searchQuery}"` : "Raise Hive Campaigns"}
       </h1>
       <div className="flex flex-wrap gap-8 justify-center">
         {filteredCampaigns.length === 0 ? (

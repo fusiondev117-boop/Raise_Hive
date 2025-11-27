@@ -32,21 +32,21 @@ const cardsData = [
     {
       image: TrustOperations,
       name: "Trust Operations",
-      description: "understand Block Fund's policies and how our Trust Operations tram protects our customers",
+      description: "understand Raise Hive's policies and how our Trust Operations tram protects our customers",
       link: "View All",
       route: "/TrustOperationsDetail"
     },
     {
       image: CampaignNextStep,
       name: "Campaign Next Steps",
-      description: "Learn about Block Fund and other next steps for your campaign",
+      description: "Learn about Raise Hive and other next steps for your campaign",
       link: "View All",
       route: "/CampaignNextStep"
     },
     {
       image: Legal,
       name: "Legal",
-      description: "Read about Block Fund's legal policies and processes",
+      description: "Read about Raise Hive's legal policies and processes",
       link: "View All",
       route: "/LegalDetail"
     },

@@ -3,9 +3,9 @@ import { Link, useNavigate, useLocation } from "react-router-dom";
 import { ConnectWallet } from "@thirdweb-dev/react";
 import { useStateContext } from "../context";
 import { CustomButton } from "./";
-import { menu, search, thirdweb } from "../assets";
+import { menu, search } from "../assets";
 import { navlinks } from "../constants";
-import BlockFundLogo from "../assets/BlockFundLogo.png";
+import RaiseHiveLogo from "./RaiseHiveLogo";
 
 const Navbar = ({ setSearchQuery }) => {
   const navigate = useNavigate();
@@ -66,137 +66,248 @@ const Navbar = ({ setSearchQuery }) => {
   }, [searchInput, allCampaigns]);
 
   return (
-    <div className="flex md:flex-row flex-col-reverse justify-between mb-[10px] gap-6">
-      <div></div>
-      <div className="lg:flex-1 flex flex-col max-w-[458px] py-2 pl-4 pr-2 h-auto shadow-sm rounded-[100px] dark:bg-[#1c1c24] bg-white relative">
-        <div className="flex flex-row py-1">
-          <input
-            type="text"
-            placeholder="Search for campaigns"
-            value={searchInput}
-            onChange={(e) => setSearchInput(e.target.value)}
-            onKeyDown={handleKeyDown}
-            className="flex w-full font-epilogue font-normal text-[14px] dark:text-white text-black bg-transparent outline-none"
-          />
-          <div
-            onClick={handleSearch}
-            className="w-[62px] h-full py-2 mb-1  rounded-[20px] dark:bg-[#8c6dfd] bg-[#8c6dfd] flex justify-center items-center cursor-pointer"
+    <nav className="sticky top-0 z-50 bg-white dark:bg-dark-900 shadow-sm border-b border-gray-100 dark:border-dark-800">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-20">
+          {/* Logo */}
+          <Link to="/" className="flex-shrink-0 hover:opacity-80 transition-opacity">
+            <RaiseHiveLogo showText={true} />
+          </Link>
+
+          {/* Desktop Navigation Links */}
+          <div className="hidden lg:flex items-center gap-8">
+            <Link to="/" className="text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 font-inter font-medium transition-colors">
+              Explore
+            </Link>
+            <Link to="/create-campaign" className="text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 font-inter font-medium transition-colors">
+              Start Campaign
+            </Link>
+            <Link to="/HowItWorks" className="text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 font-inter font-medium transition-colors">
+              How It Works
+            </Link>
+          </div>
+
+          {/* Desktop Actions */}
+          <div className="hidden lg:flex items-center gap-4">
+            {/* Search Icon */}
+            <button
+              onClick={() => setToggleDrawer((prev) => !prev)}
+              className="p-2.5 rounded-full hover:bg-gray-100 dark:hover:bg-dark-800 transition-colors"
+            >
+              <svg className="w-5 h-5 text-gray-600 dark:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+              </svg>
+            </button>
+
+            {/* Connect/Disconnect Wallet Button */}
+            {address ? (
+              <div className="flex items-center gap-3">
+                <div className="hidden md:flex items-center gap-2 px-4 py-2 bg-primary-50 dark:bg-primary-900/20 rounded-full">
+                  <div className="w-2 h-2 bg-success-500 rounded-full animate-pulse"></div>
+                  <span className="text-sm font-inter font-medium text-gray-700 dark:text-gray-300">
+                    {address.slice(0, 6)}...{address.slice(-4)}
+                  </span>
+                </div>
+                <CustomButton
+                  btnType="button"
+                  title="Disconnect"
+                  variant="outline"
+                  handleClick={() => {
+                    // Clear local storage and session
+                    localStorage.clear();
+                    sessionStorage.clear();
+                    // Reload to disconnect
+                    window.location.href = '/';
+                  }}
+                />
+              </div>
+            ) : (
+              <CustomButton
+                btnType="button"
+                title="Connect Wallet"
+                styles="bg-gradient-to-r from-primary-500 to-primary-600 text-white font-inter font-semibold px-6 py-3 rounded-full hover:shadow-primary-lg transition-all"
+                handleClick={() => {
+                  if (window.ethereum && window.ethereum.isMetaMask) {
+                    console.log("MetaMask is installed!");
+                    connect();
+                  } else {
+                    alert("MetaMask extension is not installed!");
+                  }
+                }}
+              />
+            )}
+          </div>
+
+          {/* Mobile Menu Button */}
+          <button
+            className="lg:hidden p-2 rounded-xl hover:bg-gray-100 dark:hover:bg-dark-800 transition-colors"
+            onClick={() => setToggleDrawer((prev) => !prev)}
           >
-            <img
-              src={search}
-              alt="search"
-              className="w-[15px] h-[15px] object-contain"
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              {toggleDrawer ? (
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              ) : (
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+              )}
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      {/* Search Overlay - Desktop */}
+      {toggleDrawer && (
+        <div className="hidden lg:block absolute top-full left-0 right-0 bg-white dark:bg-dark-900 border-b border-gray-200 dark:border-dark-800 shadow-lg animate-slideInUp">
+          <div className="max-w-3xl mx-auto px-4 py-6">
+            <div className="relative">
+              <div className="flex items-center gap-3 px-5 py-4 bg-gray-50 dark:bg-dark-800 rounded-2xl border border-gray-200 dark:border-dark-700 focus-within:border-primary-500 focus-within:ring-2 focus-within:ring-primary-100 transition-all">
+                <svg className="w-6 h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
+                <input
+                  type="text"
+                  placeholder="Search for campaigns..."
+                  value={searchInput}
+                  onChange={(e) => setSearchInput(e.target.value)}
+                  onKeyDown={handleKeyDown}
+                  autoFocus
+                  className="flex-1 bg-transparent outline-none text-lg font-inter text-gray-700 dark:text-gray-200 placeholder:text-gray-400"
+                />
+                {searchInput && (
+                  <button
+                    onClick={handleSearch}
+                    className="px-6 py-2.5 bg-gradient-to-r from-primary-500 to-primary-600 text-white rounded-full text-sm font-semibold hover:shadow-primary transition-all"
+                  >
+                    Search
+                  </button>
+                )}
+              </div>
+              
+              {/* Search Suggestions */}
+              {searchInput && suggestedCampaigns.length > 0 && (
+                <div className="mt-4 bg-white dark:bg-dark-800 rounded-2xl shadow-xl border border-gray-200 dark:border-dark-700 overflow-hidden">
+                  {suggestedCampaigns.map((campaign) => (
+                    <div
+                      key={campaign.id}
+                      className="p-4 hover:bg-primary-50 dark:hover:bg-primary-900/20 cursor-pointer transition-all border-b border-gray-100 dark:border-dark-700 last:border-0"
+                      onClick={() => {
+                        navigate(`/campaign-details/${campaign.id}`, { state: campaign });
+                        setSearchInput("");
+                        setToggleDrawer(false);
+                      }}
+                    >
+                      <p className="font-inter font-semibold text-gray-800 dark:text-white">{campaign.title}</p>
+                      <p className="text-sm text-gray-500 dark:text-gray-400 mt-1 flex items-center gap-2">
+                        <span className="px-2 py-0.5 bg-primary-100 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300 rounded-full text-xs font-medium">
+                          {campaign.category}
+                        </span>
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Mobile Menu */}
+      <div
+        className={`lg:hidden absolute top-full left-0 right-0 bg-white dark:bg-dark-900 border-b border-gray-200 dark:border-dark-800 shadow-lg transition-all duration-300 ${
+          toggleDrawer ? "max-h-screen opacity-100" : "max-h-0 opacity-0 overflow-hidden"
+        }`}
+      >
+        {/* Mobile Search */}
+        <div className="p-4 border-b border-gray-200 dark:border-dark-800">
+          <div className="flex items-center gap-3 px-4 py-3 bg-gray-50 dark:bg-dark-800 rounded-2xl">
+            <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            </svg>
+            <input
+              type="text"
+              placeholder="Search campaigns..."
+              value={searchInput}
+              onChange={(e) => setSearchInput(e.target.value)}
+              onKeyDown={handleKeyDown}
+              className="flex-1 bg-transparent outline-none text-sm font-inter text-gray-700 dark:text-gray-200 placeholder:text-gray-400"
             />
           </div>
         </div>
-        {searchInput && suggestedCampaigns.length > 0 && (
-          <div className="absolute top-[52px] left-0 right-0 bg-white dark:bg-[#1c1c24] rounded-[10px] shadow-lg z-10">
-            {suggestedCampaigns.map((campaign) => (
-              <div
-                key={campaign.id}
-                className="p-2 hover:bg-gray-200 dark:hover:bg-gray-700 cursor-pointer"
-                onClick={() => {
-                  navigate(`/campaign-details/${campaign.id}`, { state: campaign });
-                  setSearchInput(""); // Clear search input after selecting a suggestion
-                }}
-              >
-                {campaign.title} - <i>{campaign.category}</i>
-              </div>
-            ))}
-          </div>
-        )}
-      </div>
 
-      <div className="sm:flex hidden flex-row justify-end items-center gap-4">
-        <CustomButton
-          btnType="button"
-          title={!address ? "Log In / Sign up" : handleUserAccount()}
-          styles={!address ? "bg-[#8c6dfd]" : ""}
-          handleClick={() => {
-            if (window.ethereum && window.ethereum.isMetaMask) {
-              console.log("MetaMask is installed!");
-            } else {
-              alert("MetaMask extension is not installed!");
-            }
-            if (address) navigate("/");
-            else connect();
-          }}
-        />
-      </div>
-
-      {/* Small screen navigation */}
-      <div className="sm:hidden flex justify-between items-center relative">
-        <div className="w-[40px] h-[40px] rounded-[10px] flex justify-center items-center cursor-pointer">
-          <img
-            src={BlockFundLogo}
-            alt="user"
-            className="w-[100%] h-[100%] object-contain"
-          />
+        {/* Mobile Navigation Links */}
+        <div className="py-2">
+          <Link
+            to="/"
+            className="block px-6 py-4 text-gray-700 dark:text-gray-300 hover:bg-primary-50 dark:hover:bg-primary-900/20 font-inter font-medium transition-colors"
+            onClick={() => setToggleDrawer(false)}
+          >
+            Explore
+          </Link>
+          <Link
+            to="/create-campaign"
+            className="block px-6 py-4 text-gray-700 dark:text-gray-300 hover:bg-primary-50 dark:hover:bg-primary-900/20 font-inter font-medium transition-colors"
+            onClick={() => setToggleDrawer(false)}
+          >
+            Start Campaign
+          </Link>
+          <Link
+            to="/HowItWorks"
+            className="block px-6 py-4 text-gray-700 dark:text-gray-300 hover:bg-primary-50 dark:hover:bg-primary-900/20 font-inter font-medium transition-colors"
+            onClick={() => setToggleDrawer(false)}
+          >
+            How It Works
+          </Link>
+          <Link
+            to="/profile"
+            className="block px-6 py-4 text-gray-700 dark:text-gray-300 hover:bg-primary-50 dark:hover:bg-primary-900/20 font-inter font-medium transition-colors"
+            onClick={() => setToggleDrawer(false)}
+          >
+            My Profile
+          </Link>
         </div>
 
-        <img
-          src={menu}
-          alt="menu"
-          className="w-[34px] h-[34px] object-contain cursor-pointer"
-          onClick={() => setToggleDrawer((prev) => !prev)}
-        />
-
-        <div
-          className={`absolute top-[60px] right-0 left-0 dark:bg-[#2c2f32] bg-gray-50 shadow-lg z-10 py-4 ${
-            !toggleDrawer ? "-translate-y-[100vh]" : "translate-y-0"
-          } transition-all duration-700`}
-        >
-          <ul className="mb-4">
-            {navlinks.map((link) => {
-              const Icon = link.iconLight;
-              return (
-                <li
-                  key={link.name}
-                  className={`flex hover:bg-[#3a3a43] p-4 ${
-                    isActive === link.name && "dark:bg-[#3a3a43] bg-slate-500"
-                  }`}
-                  onClick={() => {
-                    setIsActive(link.name);
-                    setToggleDrawer(false);
-                    navigate(link.link);
-                  }}
-                >
-                  <Icon
-                    className={`w-[24px] h-[24px] object-contain ${
-                      isActive === link.name ? "text-white" : "text-[#808191]"
-                    }`}
-                  />
-                  <p
-                    className={`ml-[20px] font-epilogue font-semibold text-[14px] ${
-                      isActive === link.name ? "text-white" : "text-[#808191]"
-                    }`}
-                  >
-                    {link.name}
-                  </p>
-                </li>
-              );
-            })}
-          </ul>
-
-          <div className="flex flex-row justify-center items-center gap-4">
+        {/* Mobile Connect/Disconnect Button */}
+        <div className="p-4 border-t border-gray-200 dark:border-dark-800">
+          {address ? (
+            <div className="space-y-3">
+              <div className="flex items-center justify-center gap-2 px-4 py-3 bg-primary-50 dark:bg-primary-900/20 rounded-full">
+                <div className="w-2 h-2 bg-success-500 rounded-full animate-pulse"></div>
+                <span className="text-sm font-inter font-medium text-gray-700 dark:text-gray-300">
+                  {address.slice(0, 6)}...{address.slice(-4)}
+                </span>
+              </div>
+              <CustomButton
+                btnType="button"
+                title="Disconnect Wallet"
+                variant="outline"
+                styles="w-full"
+                handleClick={() => {
+                  // Clear all storage and logout
+                  localStorage.clear();
+                  sessionStorage.clear();
+                  setToggleDrawer(false);
+                  window.location.href = '/';
+                }}
+              />
+            </div>
+          ) : (
             <CustomButton
               btnType="button"
-              title={!address ? "Log In / Sign up" : handleUserAccount()}
-              styles={!address ? "bg-[#8c6dfd]" : ""}
+              title="Connect Wallet"
+              styles="w-full bg-gradient-to-r from-primary-500 to-primary-600 text-white font-inter font-semibold px-6 py-3 rounded-full"
               handleClick={() => {
                 if (window.ethereum && window.ethereum.isMetaMask) {
                   console.log("MetaMask is installed!");
+                  connect();
                 } else {
                   alert("MetaMask extension is not installed!");
                 }
-                if (address) navigate("/");
-                else connect();
+                setToggleDrawer(false);
               }}
             />
-          </div>
+          )}
         </div>
       </div>
-    </div>
+    </nav>
   );
 };
 

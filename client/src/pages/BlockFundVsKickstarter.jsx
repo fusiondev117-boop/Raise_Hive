@@ -25,7 +25,7 @@ const BlockFundVsKickstarter = () => {
 
       <div className="text-center my-8 max-w-3xl mx-auto">
         <h2 className="text-2xl font-bold pb-3 text-[#8c6dfd]">
-          Evaluating Block Fund vs. Traditional Crowdfunding Platforms?{" "}
+          Evaluating Raise Hive vs. Traditional Crowdfunding Platforms?{" "}
         </h2>
         <p className="text-center text-lg pb-20">
           As you might have guessed, it's not an apples-to-apples comparison, so
@@ -40,14 +40,14 @@ const BlockFundVsKickstarter = () => {
           carefully.
         </p>
         <p className="text-justify text-lg pb-8">
-          As you weigh your options, consider this: Block Fund is the leading
+          As you weigh your options, consider this: Raise Hive is the leading
           crowdfunding platform for tech products, as well as the only
           full-lifecycle platform for art projects, social impact campaigns, and
           environmental innovation projects.
         </p>
         <p className="text-justify text-lg pb-8">
           So whether youre developing a tech product or starting a project for
-          social good, Block Fund will help you successfully launch your
+          social good, Raise Hive will help you successfully launch your
           campaign every step of the way.
         </p>
       </div>
@@ -108,7 +108,7 @@ const BlockFundVsKickstarter = () => {
             1. BACKER CONFIDENCE
           </h2>
           <p className="text-3xl font-bold pb-3">
-            Block Fund provides expert security features like immutable record,
+            Raise Hive provides expert security features like immutable record,
             smart contracts and IPFS to store all your transactions and data on
             block chain. This imporves backer confidence in the platform{" "}
           </p>
@@ -117,7 +117,7 @@ const BlockFundVsKickstarter = () => {
 
       <div className="text-center my-8 max-w-3xl mx-auto">
         <p className="text-justify text-lg pb-8">
-          Backer confidence is a critical component of the Block Fund platform,
+          Backer confidence is a critical component of the Raise Hive platform,
           a cutting-edge crowdfunding solution leveraging blockchain technology.
           The immutable and transparent nature of blockchain instills a higher
           level of trust among backers, as every transaction and funding
@@ -127,7 +127,7 @@ const BlockFundVsKickstarter = () => {
           contracts automate and enforce the terms of funding agreements,
           providing backers with a reliable assurance that their contributions
           will lead to tangible outcomes if predefined conditions are met. By
-          combining these robust features, Block Fund enhances backer
+          combining these robust features, Raise Hive enhances backer
           confidence, fostering a secure and trustworthy environment that
           encourages more individuals to support innovative projects and ideas.
         </p>
@@ -137,12 +137,12 @@ const BlockFundVsKickstarter = () => {
                 <img src={CUTTINGEDGETOOLS} alt="CUTTINGEDGETOOLS" className="w-1/4 mb-4 md:mb-0" />
                 <div className="text-center md:text-left md:pl-8">
                     <h2 className="text-xl font-bold pb-3 text-[#8c6dfd]">2. CUTTING-EDGE TOOLS</h2>
-                    <p className="text-3xl font-bold pb-3">Block Fund provides pre- and post-campaign tools to take your project beyond crowdfunding</p>
+                    <p className="text-3xl font-bold pb-3">Raise Hive provides pre- and post-campaign tools to take your project beyond crowdfunding</p>
                 </div>
             </div> */}
 
       {/* <div className="text-center my-8 max-w-3xl mx-auto">
-                <p className="text-justify text-lg pb-8">Block Fund pioneers the way forward with cutting-edge tools designed to propel your project beyond the confines of crowdfunding. From pre-launch strategies to post-campaign management, our comprehensive suite of resources ensures that your project thrives long after funding ends. With innovative solutions tailored to the blockchain ecosystem, we empower creators to navigate every stage of their journey with confidence and efficiency, setting new standards for success in the industry.</p>
+                <p className="text-justify text-lg pb-8">Raise Hive pioneers the way forward with cutting-edge tools designed to propel your project beyond the confines of crowdfunding. From pre-launch strategies to post-campaign management, our comprehensive suite of resources ensures that your project thrives long after funding ends. With innovative solutions tailored to the blockchain ecosystem, we empower creators to navigate every stage of their journey with confidence and efficiency, setting new standards for success in the industry.</p>
             </div> */}
 
       <div className="flex flex-col md:flex-row justify-center items-center my-4 max-w-5xl mx-auto">
@@ -159,12 +159,12 @@ const BlockFundVsKickstarter = () => {
 
       <div className="text-center my-8 max-w-3xl mx-auto">
         <p className="text-justify text-lg pb-8">
-          Block Fund embodies flexibility and global reach, granting creators
+          Raise Hive embodies flexibility and global reach, granting creators
           the freedom to raise funds for any project from anywhere in the world.
           Whether you're launching a local initiative or targeting a global
           audience, our platform empowers you to harness the power of
           crowdfunding without limitations. With seamless access to a diverse
-          pool of backers and a borderless approach to fundraising, Block Fund
+          pool of backers and a borderless approach to fundraising, Raise Hive
           enables you to realize your vision on a truly international scale,
           breaking down barriers and unlocking opportunities for success.
         </p>
@@ -189,7 +189,7 @@ const BlockFundVsKickstarter = () => {
       <div className="text-center my-8 max-w-3xl mx-auto">
         <p className="text-justify text-lg pb-8">
           In the realm of crowdfunding, security is paramount to protect the
-          interests of backers and project creators alike. Block Fund
+          interests of backers and project creators alike. Raise Hive
           revolutionizes this space by leveraging the inherent strengths of
           blockchain technology to offer unparalleled security features.
           Blockchain's decentralized and cryptographic nature ensures that all
@@ -219,17 +219,17 @@ const BlockFundVsKickstarter = () => {
 
       <div className="text-center my-8 max-w-3xl mx-auto">
         <p className="text-justify text-lg pb-8">
-          One of the standout advantages of Block Fund is its ability to
+          One of the standout advantages of Raise Hive is its ability to
           significantly reduce intermediary costs through the utilization of
           blockchain technology. Traditional crowdfunding platforms often
           involve multiple middlemen, each taking a slice of the funds raised,
           which can diminish the resources available for project development.
-          Block Fund streamlines this process by using smart contracts to
+          Raise Hive streamlines this process by using smart contracts to
           automate and directly manage transactions between backers and project
           creators. This direct interaction eliminates the need for third-party
           intermediaries, thereby reducing fees and ensuring that a larger
           portion of contributions goes directly to the projects. By minimizing
-          these intermediary costs, Block Fund maximizes the efficiency and
+          these intermediary costs, Raise Hive maximizes the efficiency and
           effectiveness of crowdfunding, allowing project creators to allocate
           more resources towards bringing their innovative ideas to fruition.
         </p>

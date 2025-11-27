@@ -49,7 +49,7 @@ const PrivacyPolicy = () => {
         <section className="mb-8">
           <h2 className="text-xl font-semibold mb-4 text-gray-900 dark:text-gray-100">Children's Privacy</h2>
           <p className="mb-10 text-lg text-justify text-gray-800 dark:text-gray-200">
-            Block Fund is not intended for children under the age of 18. We do not knowingly collect personal
+            Raise Hive is not intended for children under the age of 18. We do not knowingly collect personal
             information from children. If we discover we have collected information from a child under 18, we will
             delete it.
           </p>

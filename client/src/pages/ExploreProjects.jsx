@@ -84,7 +84,7 @@ const ExploreProjects = () => {
   return (
     <div className="p-6">
       <h1 className="text-5xl lg:text-5xl font-semibold text-center mt-6 mb-20">
-        Block Fund Campaigns
+        Raise Hive Campaigns
       </h1>
       <div className="flex justify-end items-end  flex-row relative mb-4">
         <button
