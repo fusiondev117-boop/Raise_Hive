@@ -1,0 +1,461 @@
+const express = require('express');
+const cors = require('cors');
+const mongoose = require('mongoose');
+const dotenv = require('dotenv');
+const { Article } = require('../models/articleSchema');
+const { Comment } = require('../models/commentSchema');
+const nodemailer = require('nodemailer');
+const cron = require('node-cron');
+
+dotenv.config();
+
+const app = express();
+
+app.use(cors());
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+app.post('/send-email', async (req, res) => {
+    try {
+        const { subject, message } = req.body;
+
+        const transporter = nodemailer.createTransport({
+            service: 'gmail',
+            auth: {
+                user: 'blockfund0@gmail.com',
+                pass: 'ebpoaytnxxaantto',
+            },
+        });
+
+        const mailOptions = {
+            from: 'blockfund0@gmail.com',
+            to: 'blockfund0@gmail.com',
+            subject: subject,
+            text: message,
+        };
+
+        const info = await transporter.sendMail(mailOptions);
+
+        console.log('Message ID:', info.messageId);
+        console.log('Email sent:', info.response);
+
+        res.status(200).send('Email sent successfully');
+    } catch (error) {
+        console.error('Error sending email:', error);
+        res.status(500).send('Error sending email');
+    }
+});
+
+const uri = process.env.MONGODB_URI || 'mongoose-uri';
+
+(async () => {
+    try {
+        console.log(uri);
+        console.log(`MONGODB_URI: ${process.env.MONGODB_URI}`);
+
+        await mongoose.connect(uri);
+        console.log('Connected to the database');
+    } catch {
+        console.log('Error connecting to the database');
+    }
+})();
+
+const emailSchema = new mongoose.Schema({
+    email: { type: String, required: true, unique: true },
+});
+const Email = mongoose.model('Email', emailSchema);
+
+app.post('/subscribe', async (req, res) => {
+    const { email } = req.body;
+
+    try {
+        const newEmail = new Email({ email });
+        await newEmail.save();
+        res.status(200).send({ message: 'Subscribed successfully' });
+    } catch (err) {
+        if (err.code === 11000) {
+            res.status(409).send({ message: 'Email already subscribed' });
+        } else {
+            res.status(500).send({ message: 'Server error' });
+        }
+    }
+});
+
+const transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS,
+    },
+});
+
+const sendNewsletter = async () => {
+    try {
+        const emails = await Email.find({});
+        const mailOptions = {
+            from: process.env.EMAIL_USER,
+            subject: 'Your Newsletter',
+            text: 'This is your periodic newsletter.',
+        };
+
+        emails.forEach((emailDoc) => {
+            transporter.sendMail({ ...mailOptions, to: emailDoc.email }, (err, info) => {
+                if (err) {
+                    console.error('Error sending email:', err);
+                } else {
+                    console.log('Email sent:', info.response);
+                }
+            });
+        });
+    } catch (err) {
+        console.error('Error sending newsletters:', err);
+    }
+};
+
+// Schedule the task to run every day at 9 AM
+cron.schedule('0 9 * * *', () => {
+    console.log('Sending newsletters...');
+    sendNewsletter();
+});
+
+app.get('/health', (_req, res) => {
+    res.status(200).send('Server is running');
+});
+
+// Route to fetch a single article by its ID
+app.get("/replyke-articles/:article_id", async (req, res) => {
+    try {
+        const { article_id } = req.params;
+
+        const article = await Article.findOne({ article_id }).lean();
+
+        if (!article) return res.status(404).send();
+
+        return res.status(200).send(article);
+    } catch (err) {
+        return res.status(500).send({ error: "Server error" });
+    }
+});
+
+// Route to like an article
+app.post("/replyke-articles/like", async (req, res) => {
+    try {
+        const { article_id, user_id } = req.body;
+
+        if (!article_id || !user_id) {
+            return res.status(400).send("Missing article_id or user_id in request body");
+        }
+
+        const article = await Article.findOne({ article_id }).lean();
+
+        let newArticle;
+
+        if (article) {
+            if (article.likes.includes(user_id)) {
+                return res.status(409).send("User already liked article");
+            }
+
+            newArticle = await Article.findOneAndUpdate(
+                { article_id },
+                {
+                    $inc: { likes_count: 1 },
+                    $push: { likes: user_id },
+                },
+                { new: true }
+            );
+        } else {
+            newArticle = new Article({
+                article_id,
+                likes: [user_id],
+                likes_count: 1,
+                comments_count: 0,
+                replies_count: 0,
+            });
+            await newArticle.save();
+        }
+
+        return res.status(200).send(newArticle);
+    } catch (err) {
+        return res.status(500).send({ error: "Server error" });
+    }
+});
+
+// Route to unlike an article
+app.post("/replyke-articles/unlike", async (req, res) => {
+    try {
+        const { article_id, user_id } = req.body;
+
+        if (!article_id || !user_id) {
+            return res.status(400).send("Missing article_id or user_id in request body");
+        }
+
+        const article = await Article.findOne({ article_id }).lean();
+
+        if (!article || !article.likes.includes(user_id)) {
+            return res.status(409).send("Can't unlike, as user didn't like article or article not found");
+        }
+
+        const updatedArticle = await Article.findOneAndUpdate(
+            { article_id },
+            {
+                $inc: { likes_count: -1 },
+                $pull: { likes: user_id },
+            },
+            { new: true }
+        );
+
+        return res.status(200).send(updatedArticle);
+    } catch (err) {
+        return res.status(500).send({ error: "Server error" });
+    }
+});
+
+// Route to retrieve comments with pagination and sorting options
+app.get("/replyke-comments", async (req, res) => {
+    try {
+        const { article_id, sort_by, parent, page = 1, limit = 5 } = req.query;
+
+        const limitAsNumber = Number(limit);
+        if (isNaN(limitAsNumber)) {
+            throw new Error("Invalid request: limit must be a number");
+        }
+
+        const pageAsNumber = Number(page);
+        if (isNaN(pageAsNumber)) {
+            throw new Error("Invalid request: page must be a number");
+        }
+
+        if (pageAsNumber < 1 || pageAsNumber % 1 !== 0) {
+            throw new Error("Invalid request: 'page' must be a whole number greater than 0");
+        }
+
+        let sort = {};
+
+        if (sort_by === "popular") {
+            sort = { likes_count: -1, created_at: -1 };
+        }
+        if (sort_by === "newest") {
+            sort = { created_at: 1 };
+        }
+        if (sort_by === "oldest") {
+            sort = { created_at: -1 };
+        }
+
+        const skipCount = (pageAsNumber - 1) * limitAsNumber;
+
+        const comments = await Comment.find({
+            article_id,
+            parent,
+        })
+            .limit(limitAsNumber)
+            .skip(skipCount)
+            .sort(sort);
+
+        return res.status(200).send(comments);
+    } catch (err) {
+        return res.status(500).send({ error: "Server error" });
+    }
+});
+
+// Posting a new comment or reply to an article
+app.post("/replyke-comments", async (req, res) => {
+    try {
+        const { article_id, comment_body, parent, author } = req.body;
+
+        if (!article_id || !comment_body || !author) {
+            return res.status(400).send("Missing required comment details");
+        }
+
+        const comment = new Comment({
+            article_id,
+            body: comment_body,
+            parent,
+            likes: [],
+            likes_count: 0,
+            replies_count: 0,
+            created_at: new Date(),
+            author,
+        });
+        await comment.save();
+
+        if (parent) {
+            await Comment.findByIdAndUpdate(parent, {
+                $inc: { replies_count: 1 },
+            });
+        }
+
+        const article = await Article.findOne({ article_id }).lean();
+
+        if (article) {
+            const updateField = parent
+                ? { $inc: { replies_count: 1 } }
+                : { $inc: { comments_count: 1 } };
+            await Article.findOneAndUpdate({ article_id }, updateField);
+        } else {
+            const newArticle = new Article({
+                article_id,
+                likes: [],
+                likes_count: 0,
+                comments_count: 1,
+                replies_count: 0,
+            });
+            await newArticle.save();
+        }
+
+        return res.status(200).send(comment);
+    } catch (err) {
+        return res.status(500).send({ error: "Server error" });
+    }
+});
+
+// Deleting a comment and its replies
+app.delete("/replyke-comments", async (req, res) => {
+    try {
+        const { comment_id } = req.body;
+
+        if (!comment_id) {
+            return res.status(400).send("Comment ID is required");
+        }
+
+        const targetComment = await Comment.findById(comment_id).lean();
+        if (!targetComment) {
+            return res.status(404).send("Comment not found");
+        }
+
+        let firstLevelCommentsDeletedCount = 0;
+        let repliesDeletedCount = 0;
+
+        async function deleteCommentAndChildren(commentId) {
+            const comment = await Comment.findByIdAndDelete(commentId).lean();
+
+            if (!comment) {
+                throw new Error("Comment deletion failed");
+            }
+
+            comment.parent ? repliesDeletedCount++ : firstLevelCommentsDeletedCount++;
+
+            const childComments = await Comment.find({ parent: comment._id }).lean();
+            for (const childComment of childComments) {
+                await deleteCommentAndChildren(childComment._id);
+            }
+        }
+
+        await deleteCommentAndChildren(comment_id);
+
+        if (targetComment.parent) {
+            await Comment.findByIdAndUpdate(targetComment.parent, {
+                $inc: { replies_count: -1 },
+            });
+        }
+
+        const article = await Article.findOneAndUpdate(
+            { article_id: targetComment.article_id },
+            {
+                $inc: {
+                    comments_count: -firstLevelCommentsDeletedCount,
+                    replies_count: -repliesDeletedCount,
+                },
+            },
+            { new: true }
+        );
+
+        if (!article) {
+            throw new Error("Article not found for updating comment counts");
+        }
+
+        return res.status(200).send(article);
+    } catch (err) {
+        return res.status(500).send({ error: "Server error" });
+    }
+});
+
+// Updating the content of a comment
+app.patch("/replyke-comments", async (req, res) => {
+    try {
+        const { update, comment_id } = req.body;
+
+        if (!update || !comment_id) {
+            return res.status(400).send("Update content and comment ID are required");
+        }
+
+        const updatedComment = await Comment.findOneAndUpdate(
+            { _id: comment_id },
+            { body: update },
+            { new: true }
+        );
+
+        if (!updatedComment) {
+            return res.status(404).send("Comment not found or update failed");
+        }
+
+        return res.status(200).send(updatedComment);
+    } catch (err) {
+        return res.status(500).send({ error: "Server error" });
+    }
+});
+
+// Liking a comment
+app.post("/replyke-comments/like", async (req, res) => {
+    try {
+        const { comment_id, user_id } = req.body;
+
+        if (!comment_id || !user_id) {
+            return res.status(400).send("Comment ID and user ID are required");
+        }
+
+        const comment = await Comment.findById(comment_id).lean();
+        if (!comment) {
+            return res.status(404).send("Comment not found");
+        }
+
+        if (comment.likes.includes(user_id)) {
+            return res.status(409).send("User has already liked this comment");
+        }
+
+        const updatedComment = await Comment.findByIdAndUpdate(
+            comment_id,
+            { $inc: { likes_count: 1 }, $push: { likes: user_id } },
+            { new: true }
+        );
+
+        return res.status(200).send(updatedComment);
+    } catch (err) {
+        return res.status(500).send({ error: "Server error" });
+    }
+});
+
+// Unliking a comment
+app.post("/replyke-comments/unlike", async (req, res) => {
+    try {
+        const { comment_id, user_id } = req.body;
+
+        if (!comment_id || !user_id) {
+            return res.status(400).send("Comment ID and user ID are required");
+        }
+
+        const comment = await Comment.findById(comment_id).lean();
+        if (!comment) {
+            return res.status(404).send("Comment not found");
+        }
+
+        if (!comment.likes.includes(user_id)) {
+            return res.status(409).send("User hasn't liked this comment");
+        }
+
+        const updatedComment = await Comment.findByIdAndUpdate(
+            comment_id,
+            { $inc: { likes_count: -1 }, $pull: { likes: user_id } },
+            { new: true }
+        );
+
+        return res.status(200).send(updatedComment);
+    } catch (err) {
+        return res.status(500).send({ error: "Server error" });
+    }
+});
+
+const PORT = process.env.PORT || 3000;
+
+app.listen(PORT, () => {
+    console.log(`Server is running on PORT: ${PORT}`);
+});
