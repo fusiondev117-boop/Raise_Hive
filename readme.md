@@ -8,7 +8,7 @@ A blockchain-powered crowdfunding platform connecting creators with backers thro
 [![React](https://img.shields.io/badge/React-18.2-61DAFB)](https://reactjs.org/)
 [![Vite](https://img.shields.io/badge/Vite-3.0-646CFF)](https://vitejs.dev/)
 [![Tailwind](https://img.shields.io/badge/Tailwind-3.4-38B2AC)](https://tailwindcss.com/)
-[![Neon](https://img.shields.io/badge/Neon-PostgreSQL-00E699)](https://neon.tech/)
+[![MongoDB](https://img.shields.io/badge/MongoDB-Atlas-47A248)](https://www.mongodb.com/)
 
 ## ✨ Features
 
@@ -18,14 +18,14 @@ A blockchain-powered crowdfunding platform connecting creators with backers thro
 - 💬 **Comment System** - Campaign discussions with nested replies
 - 🔍 **Smart Search** - Real-time campaign filtering and suggestions
 - 📧 **Newsletter** - Automated email subscription system
-- 🗄️ **Serverless Database** - Neon PostgreSQL with 3 GB free storage
+- 🗄️ **Cloud Database** - MongoDB Atlas with 512 MB free storage
 
 ## 🚀 Quick Start
 
 ### Prerequisites
 
 - Node.js v16+ and npm
-- [Neon account](https://neon.tech) (free, no credit card required)
+- [MongoDB Atlas account](https://www.mongodb.com/cloud/atlas/register) (free, no credit card required)
 - MetaMask browser extension
 
 ### 1. Clone & Install
@@ -48,24 +48,24 @@ npm start
 
 # Terminal 2 - Frontend
 cd client
-npm run dev
+npm start
 ```
 
 **Access:**
 - Frontend: http://localhost:3000
 - Backend: http://localhost:3001
 
-✅ You should see "Connected to Neon PostgreSQL database" in the backend terminal.
+✅ You should see "Connected to MongoDB successfully" in the backend terminal.
 
 ## 🛠️ Tech Stack
 
 **Frontend**: React 18.2 • Vite 3.0 • Tailwind CSS 3.4 • NextUI • Framer Motion
 
-**Backend**: Node.js • Express.js • Neon PostgreSQL • Nodemailer • Node-cron
+**Backend**: Node.js • Express.js • MongoDB Atlas • Mongoose • Nodemailer • Node-cron
 
 **Blockchain**: Ethereum • Solidity • Thirdweb SDK • Ethers.js • MetaMask
 
-**Database**: Neon PostgreSQL (3 GB free, serverless, auto-scaling)
+**Database**: MongoDB Atlas (512 MB free, cloud-hosted, VPN compatible)
 
 ## 📁 Project Structure
 
@@ -80,14 +80,17 @@ raisehive/
 │
 ├── server/              # Express backend
 │   ├── src/
-│   │   ├── server.js    # Main server
-│   │   ├── db.js        # PostgreSQL connection
-│   │   └── migrate.js   # Database migration
+│   │   └── server.js    # Main server
+│   ├── models/          # Mongoose schemas
+│   │   ├── emailSchema.js
+│   │   ├── articleSchema.js
+│   │   └── commentSchema.js
 │   └── .env
 │
-├── web3/                # Smart contracts
+└── web3/                # Smart contracts
     └── contracts/
         └── RaiseHive.sol
+```
 
 ## 🎨 Design System
 
@@ -108,7 +111,7 @@ raisehive/
 3. **Support Campaign** - Enter contribution amount and confirm transaction
 4. **Create Campaign** - Fill in details and submit via smart contract
 
-## CLicense
+## 📄 License
 
 MIT License - see [LICENSE](LICENSE) file for details.
 
