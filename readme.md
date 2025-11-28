@@ -39,33 +39,7 @@ cd server && npm install
 cd ../client && npm install
 ```
 
-### 2. Setup Database (2 minutes)
-
-**Create Neon database:**
-1. Sign up at [neon.tech](https://neon.tech)
-2. Create project: "raisehive"
-3. Copy connection string
-
-**Configure environment:**
-```bash
-cd server
-cp .env.example .env
-```
-
-Edit `server/.env`:
-```env
-DATABASE_URL=postgresql://user:pass@ep-xxx.region.aws.neon.tech/raisehive?sslmode=require
-EMAIL_USER=your-email@gmail.com
-EMAIL_PASS=your-gmail-app-password
-NODE_ENV=development
-```
-
-**Create tables:**
-```bash
-npm run migrate
-```
-
-### 3. Start Application
+### 2. Start Application
 
 ```bash
 # Terminal 1 - Backend
