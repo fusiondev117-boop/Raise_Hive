@@ -7,10 +7,12 @@ const FundCard = ({ owner, title, category, description, target, deadline, amoun
 
   return (
     <div
-      className="w-full sm:max-w-[240px] rounded-[15px] bg-white dark:bg-[#1c1c24] shadow-lg cursor-pointer"
+      className="w-full sm:max-w-[240px] rounded-[15px] bg-white dark:bg-[#1c1c24] cursor-pointer hover-dramatic transition-smooth overflow-hidden shadow-glow-multi"
       onClick={handleClick}
     >
-      <img src={image[0]} alt="fund" className="w-full h-[150px] object-cover rounded-[15px]" />
+      <div className="img-zoom overflow-hidden rounded-t-[15px] relative">
+        <img src={image[0]} alt="fund" className="w-full h-[150px] object-cover" />
+      </div>
 
       <div className="flex flex-col p-4">
         <div className="flex flex-row items-center mb-[18px]">

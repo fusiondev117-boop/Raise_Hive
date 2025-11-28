@@ -97,11 +97,11 @@ const WhatWeDo = () => {
         {/* Newsletter Section - Modern Design */}
         <div className="my-20 mx-auto w-full">
           <div className="max-w-4xl mx-auto px-4">
-            <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-primary-500 via-secondary-500 to-accent-500 p-12 md:p-16">
+            <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-primary-500 via-secondary-500 to-accent-500 p-12 md:p-16 shadow-glow-multi hover:shadow-glow-multi transition-all duration-500 animate-gradient">
               {/* Background Pattern */}
               <div className="absolute inset-0 opacity-10">
-                <div className="absolute top-0 left-0 w-64 h-64 bg-white rounded-full blur-3xl"></div>
-                <div className="absolute bottom-0 right-0 w-64 h-64 bg-white rounded-full blur-3xl"></div>
+                <div className="absolute top-0 left-0 w-64 h-64 bg-white rounded-full blur-3xl animate-float"></div>
+                <div className="absolute bottom-0 right-0 w-64 h-64 bg-white rounded-full blur-3xl animate-float" style={{animationDelay: '1s'}}></div>
               </div>
 
               {/* Content */}
@@ -113,7 +113,7 @@ const WhatWeDo = () => {
                   <span className="text-white font-inter font-semibold text-sm">Newsletter</span>
                 </div>
 
-                <h2 className="text-3xl md:text-4xl font-manrope font-bold text-white mb-4">
+                <h2 className="text-3xl md:text-4xl font-manrope font-bold text-white mb-4 animate-slideInUp neon-glow">
                   Great Finds, Delivered Daily
                 </h2>
                 <p className="text-white/90 font-inter text-lg mb-8 max-w-2xl mx-auto leading-relaxed">
@@ -134,7 +134,7 @@ const WhatWeDo = () => {
                     />
                     <button
                       onClick={handleSubmit}
-                      className="px-8 py-4 bg-gray-900 hover:bg-gray-800 text-white font-inter font-semibold rounded-full transition-all hover:scale-105 whitespace-nowrap"
+                      className="px-8 py-4 bg-gray-900 hover:bg-gray-800 text-white font-inter font-semibold rounded-full transition-smooth hover:scale-110 hover-shine shadow-glow-multi whitespace-nowrap"
                     >
                       Subscribe
                     </button>

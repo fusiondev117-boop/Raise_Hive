@@ -70,19 +70,19 @@ const Navbar = ({ setSearchQuery }) => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <Link to="/" className="flex-shrink-0 hover:opacity-80 transition-opacity">
+          <Link to="/" className="flex-shrink-0 hover-scale-sm transition-smooth">
             <RaiseHiveLogo showText={true} />
           </Link>
 
           {/* Desktop Navigation Links */}
           <div className="hidden lg:flex items-center gap-8">
-            <Link to="/" className="text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 font-inter font-medium transition-colors">
+            <Link to="/" className="text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 font-inter font-medium transition-smooth hover-scale-sm">
               Explore
             </Link>
-            <Link to="/create-campaign" className="text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 font-inter font-medium transition-colors">
+            <Link to="/create-campaign" className="text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 font-inter font-medium transition-smooth hover-scale-sm">
               Start Campaign
             </Link>
-            <Link to="/HowItWorks" className="text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 font-inter font-medium transition-colors">
+            <Link to="/HowItWorks" className="text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 font-inter font-medium transition-smooth hover-scale-sm">
               How It Works
             </Link>
           </div>
@@ -92,7 +92,7 @@ const Navbar = ({ setSearchQuery }) => {
             {/* Search Icon */}
             <button
               onClick={() => setToggleDrawer((prev) => !prev)}
-              className="p-2.5 rounded-full hover:bg-gray-100 dark:hover:bg-dark-800 transition-colors"
+              className="p-2.5 rounded-full hover:bg-gray-100 dark:hover:bg-dark-800 transition-smooth hover-scale-sm"
             >
               <svg className="w-5 h-5 text-gray-600 dark:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
@@ -125,7 +125,7 @@ const Navbar = ({ setSearchQuery }) => {
               <CustomButton
                 btnType="button"
                 title="Connect Wallet"
-                styles="bg-gradient-to-r from-primary-500 to-primary-600 text-white font-inter font-semibold px-6 py-3 rounded-full hover:shadow-primary-lg transition-all"
+                styles="bg-gradient-to-r from-primary-500 to-primary-600 text-white font-inter font-semibold px-6 py-3 rounded-full hover:shadow-primary-lg transition-smooth hover-scale-sm hover-shine"
                 handleClick={() => {
                   if (window.ethereum && window.ethereum.isMetaMask) {
                     console.log("MetaMask is installed!");

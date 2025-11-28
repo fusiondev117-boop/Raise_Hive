@@ -8,4 +8,19 @@ export default defineConfig({
   define: {
     "process.env": {},
   },
+  server: {
+    host: '0.0.0.0', // Listen on all network interfaces (VPN compatible)
+    port: 3000,
+    strictPort: false,
+    hmr: {
+      clientPort: 3000,
+    },
+    watch: {
+      usePolling: true, // Better compatibility with VPN/network drives
+    },
+  },
+  preview: {
+    host: '0.0.0.0',
+    port: 3000,
+  },
 });

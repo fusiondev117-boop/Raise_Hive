@@ -103,12 +103,16 @@ const DisplayCampaigns = ({ title, isLoading, campaigns }) => {
             </p>
           </div>
         ) : (
-          displayedCampaigns.map((campaign) => (
-            <FundCard
+          displayedCampaigns.map((campaign, index) => (
+            <div 
               key={campaign.id}
-              {...campaign}
-              handleClick={() => handleNavigate(campaign)}
-            />
+              className={`animate-slideInUp delay-${Math.min((index % 4) * 100 + 100, 600)}`}
+            >
+              <FundCard
+                {...campaign}
+                handleClick={() => handleNavigate(campaign)}
+              />
+            </div>
           ))
         )}
       </div>
@@ -120,7 +124,7 @@ const DisplayCampaigns = ({ title, isLoading, campaigns }) => {
           <button
             onClick={handlePrevious}
             disabled={startIndex === 0}
-            className={`flex items-center gap-2 px-4 py-2.5 rounded-full font-inter font-medium text-sm transition-all ${
+            className={`flex items-center gap-2 px-4 py-2.5 rounded-full font-inter font-medium text-sm transition-smooth hover-scale-sm ${
               startIndex === 0
                 ? 'bg-gray-100 dark:bg-dark-800 text-gray-400 dark:text-gray-600 cursor-not-allowed'
                 : 'bg-white dark:bg-dark-800 text-gray-700 dark:text-gray-300 hover:bg-primary-50 dark:hover:bg-primary-900/20 hover:text-primary-600 dark:hover:text-primary-400 shadow-sm hover:shadow-md'
@@ -157,9 +161,9 @@ const DisplayCampaigns = ({ title, isLoading, campaigns }) => {
                 <button
                   key={index}
                   onClick={() => setStartIndex(index * pageSize)}
-                  className={`w-10 h-10 rounded-full font-inter font-medium text-sm transition-all ${
+                  className={`w-10 h-10 rounded-full font-inter font-medium text-sm transition-smooth hover-scale-sm ${
                     index === currentPage
-                      ? 'bg-gradient-to-r from-primary-500 to-primary-600 text-white shadow-primary'
+                      ? 'bg-gradient-to-r from-primary-500 to-primary-600 text-white shadow-primary animate-glow-pulse'
                       : 'bg-white dark:bg-dark-800 text-gray-700 dark:text-gray-300 hover:bg-primary-50 dark:hover:bg-primary-900/20 hover:text-primary-600 dark:hover:text-primary-400 shadow-sm hover:shadow-md'
                   }`}
                 >
@@ -173,7 +177,7 @@ const DisplayCampaigns = ({ title, isLoading, campaigns }) => {
           <button
             onClick={handleNext}
             disabled={startIndex + pageSize >= campaigns.length}
-            className={`flex items-center gap-2 px-4 py-2.5 rounded-full font-inter font-medium text-sm transition-all ${
+            className={`flex items-center gap-2 px-4 py-2.5 rounded-full font-inter font-medium text-sm transition-smooth hover-scale-sm ${
               startIndex + pageSize >= campaigns.length
                 ? 'bg-gray-100 dark:bg-dark-800 text-gray-400 dark:text-gray-600 cursor-not-allowed'
                 : 'bg-white dark:bg-dark-800 text-gray-700 dark:text-gray-300 hover:bg-primary-50 dark:hover:bg-primary-900/20 hover:text-primary-600 dark:hover:text-primary-400 shadow-sm hover:shadow-md'

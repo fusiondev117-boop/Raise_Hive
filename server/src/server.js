@@ -10,7 +10,14 @@ dotenv.config();
 
 const app = express();
 
-app.use(cors());
+// CORS configuration for new ports (frontend: 3000, backend: 3001)
+const corsOptions = {
+    origin: ['http://localhost:3000', 'http://127.0.0.1:3000'],
+    credentials: true,
+    optionsSuccessStatus: 200
+};
+
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -55,16 +62,24 @@ app.post('/send-email', async (req, res) => {
     }
 });
 
-const uri = process.env.MONGODB_URI || 'mongoose-uri';
+const uri = process.env.MONGODB_URI || 'mongodb://localhost:27017/raisehive';
+
+// MongoDB Atlas connection with better error handling and VPN compatibility
 (async () => {
     try {
-    console.log(uri);
-    console.log(`MONGODB_URI: ${process.env.MONGODB_URI}`);
-
-        await mongoose.connect(uri);
-        console.log('Connected to the database');
-    } catch {
-        console.log('Error connecting to the database');
+        console.log('Attempting to connect to MongoDB...');
+        
+        await mongoose.connect(uri, {
+            serverSelectionTimeoutMS: 10000, // Increased timeout for VPN
+            socketTimeoutMS: 45000,
+        });
+        
+        console.log('✅ Connected to MongoDB successfully');
+        console.log(`Database: ${mongoose.connection.name}`);
+    } catch (error) {
+        console.error('❌ Error connecting to MongoDB:', error.message);
+        console.log('💡 Make sure MONGODB_URI is set in .env file');
+        console.log('💡 For MongoDB Atlas, whitelist IP: 0.0.0.0/0 (allow all)');
     }
 })();
 
@@ -551,8 +566,10 @@ app.post("/replyke-comments/unlike", async (req, res) => {
     }
 });
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
 
-app.listen(PORT, () => {
+// Listen on all network interfaces (0.0.0.0) for VPN compatibility
+app.listen(PORT, '0.0.0.0', () => {
     console.log(`Server is running on PORT: ${PORT}`);
+    console.log(`Access via: http://localhost:${PORT} or http://127.0.0.1:${PORT}`);
 });
