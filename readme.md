@@ -108,7 +108,7 @@ raisehive/
 3. **Support Campaign** - Enter contribution amount and confirm transaction
 4. **Create Campaign** - Fill in details and submit via smart contract
 
-## � CLicense
+## CLicense
 
 MIT License - see [LICENSE](LICENSE) file for details.
 
@@ -117,12 +117,6 @@ MIT License - see [LICENSE](LICENSE) file for details.
 - **Email**: hello@raisehive.io
 - **Website**: [raisehive.io](https://raisehive.io)
 - **GitHub**: [@fusiondev117-boop](https://github.com/fusiondev117-boop)
-
-## 🙏 Acknowledgments
-
-[Thirdweb](https://thirdweb.com/) • [Tailwind CSS](https://tailwindcss.com/) • [NextUI](https://nextui.org/) • [Neon](https://neon.tech/) • [Vite](https://vitejs.dev/) • [Framer Motion](https://www.framer.com/motion/)
-
----
 
 **Made with ❤️ for creators worldwide**
 
