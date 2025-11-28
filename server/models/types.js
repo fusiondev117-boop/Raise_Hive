@@ -10,13 +10,6 @@
  */
 
 /**
- * @typedef {Object} IAuthor
- * @property {string} _id
- * @property {string} name
- * @property {string} [img]
- */
-
-/**
  * @typedef {Object} IComment
  * @property {string} _id
  * @property {string} article_id
@@ -26,7 +19,10 @@
  * @property {number} likes_count
  * @property {number} replies_count
  * @property {Date} created_at
- * @property {IAuthor} author
+ * @property {Object} author
+ * @property {string} author._id
+ * @property {string} author.name
+ * @property {string} [author.img]
  */
 
 /**
